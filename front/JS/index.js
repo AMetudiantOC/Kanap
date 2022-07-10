@@ -1,33 +1,58 @@
-// Setting up the table
-let kanapData = [];
+//----------------------------------------------------------------
+// Récupération des produits de l'api
+// Recovery of api products
+//----------------------------------------------------------------
 
-// Data recovery
-const fetchKanap = async ()=> {
-    await fetch("http://localhost:3000/api/products")
-    .then((res) => res.json())
-    .then((promise) => {
-        kanapData = promise;
-        console.log(kanapData);
-    })
-};
+fetch("http://localhost:3000/api/products")
 
-// Display of furniture
-// We are waiting for fetchKanap to work with his answers
-const kanapDisplay = async () => {
-    await fetchKanap();
+  // quand tu as la réponse donne le résultat en json
+  .then((res) => res.json())
 
-    document.getElementById("items").innerHTML = kanapData.map((kanap) => `
-    <a class="items a" href="${kanap._id}">
-    <article class="items article"> 
-    <div id=card${kanap._id}" class="items article img "></div>
-    <img src="${kanap.imageUrl}" alt="image de meuble ${kanap.name}"/>
-    <h3 class="items article h3">${kanap.name}</h3>
-    <p class="items article p">${kanap.description}</p>
-    <p>${kanap.price}€</p>
+  // ce que l'on a reçu et qui a été traité en json sera appelé objetProduits
+  .then((objetProduits) => {
+
+    // donne moi des informations en console sur ce qui est récupéré sous forme tableau
+    console.table(objetProduits);
+
+    // appel de la fonction d'affichage des produits
+    lesKanaps(objetProduits);
+  })
+
+  // dans le cas d'une erreur remplace le contenu de titre par un h1 au contenu de erreur 404 et renvoit en console l'erreur
+  .catch((err) => {
+    document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
+    console.log("erreur 404, sur ressource api:" + err);
+  });
+
+
+//----------------------------------------------------------------
+// Fonction d'affichage des produits de l'api sur la page index
+// Function to display api products on the index page
+//----------------------------------------------------------------
+
+function lesKanaps(index) {
+
+  // déclaration de variable de la zone d'article
+  let zoneArticle = document.querySelector("#items");
+
+  // boucle pour chaque indice (nommé 'article') dans index.html
+  // parcourir un tableau typé (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Statements/for...of)
+  for (let article of index) {
+
+    /* création et ajout des zones d'articles, insertion de l'adresse produit via chemin produit + paramètres(son id);
+    la page index est http://127.0.0.1:5500/front/html/index.html donc la page du produit sera http://127.0.0.1:5500/front/html/product.html 
+    (d'ou le ./product.html) pour rajouter son paramètre on met ? puis la clé (ici _id) associé (=) à sa valeur dynamique ${article._id} */
+
+    zoneArticle.innerHTML += `<a href="./product.html?_id=${article._id}">
+
+    <article>
+      <img src="${article.imageUrl}" alt="${article.altTxt}">
+      <h3 class="productName">${article.name}</h3>
+      <p class="productDescription">${article.description}</p>
     </article>
-    </a>
-    `).join("");
-
+    
+  </a>`;
+  }
 }
 
-kanapDisplay ();
+//----------------------------------------------------------------

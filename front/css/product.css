@@ -3,11 +3,10 @@
 /*********/
 
 /*Item Details*/
-.items {
+.item {
 	margin: 135px 0;
 	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	justify-content: center;
 }
 .item article {
 	display: flex;
