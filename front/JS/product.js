@@ -63,7 +63,7 @@ function showProduct(product) {
   image.setAttribute('alt', product.altTxt);
   image.setAttribute('title', "ceci est l'image du " + product.name);
 
-  // on ajoute l'image en tant qu'enfant de la variable "picture"
+  // on ajoute l'image en tant qu'enfant de la variable "picture" (qui fait référence à la balise ayant une classe CSS ".item__img")
   picture.appendChild(image);
 
   // on ajoute le nom
@@ -75,7 +75,7 @@ function showProduct(product) {
   // on ajout la description
   description.innerHTML = product.description;
 
-  // On va chercher les couleurs du tableau colors avec une boucle for et on créait la liste
+  // On va chercher les couleurs du tableau colors avec une boucle for et on créait la liste d'option de couleurs
   for (let i=0; i < product.colors.length; i++) {
 
     // on crée la balise "option"
