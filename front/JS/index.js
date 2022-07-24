@@ -14,7 +14,13 @@ const fetchProducts = async() => {
     .then(res => res.json()
 
     // les informations reçues en .json seront regroupées dans une variable nommée "products"
-    .then(JSON => products = JSON));
+    .then(JSON => products = JSON))
+
+    // dans le cas d'une erreur, on remplace le contenu du titre par "erreur 404" (en H1)
+    .catch((err) => {
+        document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
+        console.log("erreur 404, sur ressource api:" + err);
+      });
 
     /* on demande le résultat "products" sous forme de tableau dans la console
     pour le nombre de produit, se fier surtour à la ligne "Array" située en-dessous du tableau*/
@@ -22,6 +28,7 @@ const fetchProducts = async() => {
 
     // on exécute la fonction "showProducts" qui a pour paramètre la réponse de la requête "fetch"
     showProducts(products);
+
 };
 
 //----------------------------------------------------------------------
@@ -59,17 +66,5 @@ function showProducts(productsArray) {
             </a>`;
     }
 }
-
-//----------------------------------------------------------------------
-// Fonction pour afficher une erreur
-//----------------------------------------------------------------------
-
-// dans le cas d'une erreur, on remplace le contenu du titre par "erreur 404" (en H1)
-const oppositeCase = ((err) => {
-    document.querySelector(".titles").innerHTML = "<h1>erreur 404</h1>";
-
-    // on renvoit l'erreur également en console
-    console.log("erreur 404, sur ressource api:" + err);
-  });
 
 //----------------------------------------------------------------------
