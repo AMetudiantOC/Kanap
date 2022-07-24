@@ -1,4 +1,7 @@
-// fonction pour récupérer les données de l'api
+//----------------------------------------------------------------------
+// Fonction pour récupérer les données de l'api
+//----------------------------------------------------------------------
+
 const fetchProducts = async() => { 
     await fetch('http://localhost:3000/api/products') // on va chercher l'API avec la methode fetch 
     .then(res => res.json()
@@ -11,14 +14,19 @@ console.log(addProduct);
 const cartDisplay = async () => {
 
     if (addProduct) { // on récupere bien addProduct 
-        await addProduct;   
+        await addProduct;
     }
 };
 cartDisplay();
 
-// affichage des produits
+let allArticles = [];
+allArticles.push(addProduct);
+
+//----------------------------------------------------------------------
+// Affichage des produits
+//----------------------------------------------------------------------
+
 for (let i=0; i < addProduct.length; i++) {
-    
 
 let cartItems = document.getElementById("cart__items");
 
@@ -102,9 +110,10 @@ let pDeleteItem = document.createElement("p");
     divCartItemsDelete.appendChild(pDeleteItem);
     pDeleteItem.innerHTML = "Supprimer";
 
-// fin de l'affichage des produits panier 
+//----------------------------------------------------------------------
+// Affichage de la quantité et du prix pour les produits
+//----------------------------------------------------------------------
 
-// affichage de la quantité et du prix pour les produits
     const quantityAndPrice = () => {
     
     let elQuantity = document.getElementsByClassName('itemQuantity'); // on cible la class "itemQuantity"
@@ -118,16 +127,16 @@ let pDeleteItem = document.createElement("p");
     let valueQuantity = document.getElementById('totalQuantity'); // on cible l'id totalQuantity
     valueQuantity.innerHTML = totalQuantity; // on ajoute la quantité dans le html 
 
-console.log(localStorage);
+    console.log(localStorage);
 
-// affichage du prix total
-    totalPrice = totalQuantity; // on fixe la prix total à 0 de base
+    // affichage du prix total
+    let totalPrice = (totalQuantity *= products[i].price); // on fixe la prix total à 0 de base
     let productTotalPrice = document.getElementById('totalPrice');
     productTotalPrice.innerHTML = totalPrice;
     };
-quantityAndPrice();
+    quantityAndPrice();
 
-// fonction pour modifier la quantité 
+    // fonction pour modifier la quantité 
     const quantityChanged = () => {
     let qtyModif = document.querySelectorAll(".itemQuantity");
     
@@ -150,7 +159,10 @@ quantityAndPrice();
 };
 quantityChanged();
 
-// fonction pour supprimer un produit
+//----------------------------------------------------------------------
+// Fonction pour supprimer un produit
+//----------------------------------------------------------------------
+
 const deleteProducts = () => {
          
     pDeleteItem.addEventListener("click" , (e) => {
@@ -173,9 +185,9 @@ const deleteProducts = () => {
 
 deleteProducts();
 
-let btnCommander = document.getElementById("order");
+let btnCommand = document.getElementById("order");
 
-btnCommander.addEventListener("click", (e) => {
+btnCommand.addEventListener("click", (e) => {
 e.preventDefault();
 
 const contact = { 
@@ -230,22 +242,4 @@ if (contactRegexEnd == true) {
 };
 fetchProducts();
 
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
- 
-
-
-
-
+//----------------------------------------------------------------------
