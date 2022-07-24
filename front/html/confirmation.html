@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
+  <!-- HEAD -->
+
   <head>
-    <title>Confirmation</title>
 
     <meta charset="utf-8">
     <meta name="description" content="Plateforme incroyable de e-commerce">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,38 +15,63 @@
     <link href="../css/style.css" rel="stylesheet" />
     <link href="../css/confirmation.css" rel="stylesheet" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Confirmation</title>
+
   </head>
 
   <body>
+
+    <!-- HEADER -->
+
     <header>
+
       <div class="limitedWidthBlockContainer informations">
         <div class="limitedWidthBlock">
+
+          <!-- CONTACT -->
+
           <ul>
             <li><img src="../images/icons/phone.svg" alt="logo de téléphone" class="informations__phone">01 23 45 67 89</li>
             <li><img src="../images/icons/mail.svg" alt="logo d'une enveloppe" class="informations__mail">support@name.com</li>
             <li><img src="../images/icons/adress.svg" alt="logo d'un point de géolocalisation" class="informations__address">01 23 45 67 89</li>
           </ul>
+
         </div>
       </div>
+
       <div class="limitedWidthBlockContainer menu">
         <div class="limitedWidthBlock">
+
+          <!-- LOGO -->
+
           <a href="./index.html">
             <img class="logo" src="../images/logo.png" alt="Logo de l'entreprise">
           </a>
+
+          <!-- NAVIGATION -->
+
           <nav>
             <ul>
               <a href="./index.html"><li>Accueil</li></a>
               <a href="./cart.html"><li>Panier</li></a>
             </ul>
           </nav>
+
         </div>
       </div>
+
+      <!-- BANNER PHOTOGRAPHY -->
+
       <img class="banniere" src="../images/banniere.png" alt="Baniere">
+
     </header>
+
+    <!-- MAIN -->
     
     <main class="limitedWidthBlockContainer">
       <div class="limitedWidthBlock" id="limitedWidthBlock">
+
+        <!-- VALIDATION MESSAGE -->
         
         <div class="confirmation">
           <p>Commande validée ! <br>Votre numéro de commande est : <span id="orderId"><!-- 65431343444684674 --></span><br>Merci pour votre commande !</p>
@@ -51,30 +79,57 @@
 
       </div>
     </main>
+
+    <!-- FOOTER -->
     
     <footer>
+
       <div class="limitedWidthBlockContainer footerMain">
         <div class="limitedWidthBlock">
+
+          <!-- LOGO -->
+
           <div>
             <img class="logo" src="../images/logo.png" alt="Logo de l'entreprise">
           </div>
+
+          <!-- ADRESS -->
+
           <div>
             <p>10 quai de la charente <br>75019 Paris 19</p>
           </div>
+
+          <!-- PHONE -->
+
           <div>
             <p>Téléphone : 01 23 45 67 89</p>
           </div>
+
+          <!-- MAIL -->
+
           <div>
             <p>Email : support@name.com</p>
           </div>
+
         </div>
       </div>
+
+      <!-- COPYRIGHT -->
+
       <div class="limitedWidthBlockContainer footerSecondary">
+
         <div class="limitedWidthBlock">
           <p>© Copyright 2021 - 2042 | Openclassrooms by Openclassrooms | All Rights Reserved | Powered by <3</p>
         </div>
+
       </div>
+
     </footer>
+
+    <!-- JAVASCRIPT -->
+
   <script src="../js/confirmation.js"></script>
+
   </body>
+
 </html>
